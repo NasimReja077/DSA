@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family:'Courier New', Courier, monospace;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h2{
+            font-size: 2rem;
+        }
+        table{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        td{
+            padding: 4px 8px;
+            border: 2px solid black;
+            align-items: center;
+            justify-content: center;
+        }
+        button{
+            height: 35px;
+            width: 200px;
+            background-color: blueviolet;
+            color: white;
+            border-radius: 20px;
+            border: none;
+        }
+        button:hover{
+            background-color: rgb(105, 31, 173);
+            scale: 1.05;
+        }
+        button:active{
+            background-color: blueviolet;
+            scale: 1;
+        }
+        input {
+            height: 35px;
+            width: 150px;
+            font-size: 16px;
+            background-color: white;
+            color: black;
+            border-radius: 20px;
+            border: 3px solid blueviolet;
+            padding-left: 4px;
+        }
+        .yello-back{
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Create/Modify/Found MinMax in ARRAY</h2>
+
+    <table>
+        <tr>
+            <td rowspan="3">
+                <input type="number" id="num" placeholder="Enter a number">
+            </td>
+            <td>
+                <button onclick="addItem()">Add an Element</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="deleteItem()">Delete an Element</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="findMinMax()">Find Minimum and Maximum</button>
+            </td>
+        </tr>
+        <tr class="yello-back">
+            <td colspan="2">
+                <div id="array"> </div>
+            </td>
+        </tr>
+
+        <tr class="yello-back">
+            <td>
+                <div> Minimum Number: </div>
+            </td>
+            <td>
+                <div id='result-min'></div>
+            </td>
+        </tr>
+        <tr class="yello-back">
+            <td>
+                <div>Maximum Number: </div>
+            </td>
+            <td>
+                <div id='result-max'></div>
+            </td>
+            
+        </tr>
+
+
+    </table>
+
+
+
+
+
+
+  
+    <script>
+
+        let arr = [];
+        const array = document.getElementById('array');
+
+        array.textContent = `Array: [${arr}]`;
+
+        function addItem() {
+            const num = parseInt(document.getElementById('num').value);
+
+            if(!isNaN(num)){
+
+                arr.push(num);
+                array.textContent = `Array: [${arr}]`;
+            }     
+
+            document.getElementById('num').value = "";
+        }
+        function deleteItem() {
+            arr.pop();
+            array.textContent = `Array: [${arr}]`;
+
+            document.getElementById('num').value = "";
+        }
+
+        function findMinMax() {
+
+            let min = Infinity;
+            let max = -Infinity;
+
+            for (let num of arr) {
+
+                if (num < min) {
+                    min = num;
+                }
+
+                if (num > max) {
+                    max = num
+                }
+
+            }
+            const result_min = document.getElementById('result-min');
+            const result_max = document.getElementById('result-max');
+            result_min.textContent = min;
+            result_max.textContent = max;
+
+
+            document.getElementById('num').value = "";
+        }
+    </script>
+</body>
+
+</html>
